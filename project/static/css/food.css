@@ -1,0 +1,214 @@
+.container {
+    background-image: linear-gradient(to top,rgba(145, 146,122,0.62),rgba(145,146,122,0.2)),url("/static/images/panel.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    height: 695px;
+    
+    text-align: center;
+}
+
+.container h1 {
+    padding-top: 120px;
+    color: white;
+    font-size: 60;
+}
+
+.container p {
+    color: white;
+    padding-top: 50px;
+}
+
+.order {
+    background-color: brown;
+    padding: 15px 10px;
+    border: none;
+    font-size: 20px;
+    border-radius: 3px;
+    margin-top: 60px;
+    transition: 0.2s ease;
+}
+
+.order a {
+    text-decoration: none;
+    color: white;
+}
+
+.order:hover {
+    padding: 20px 20px;
+}
+
+.container2 {
+    margin: 30px 20px;
+    border: 2px solid rgb(108, 4, 4);
+}
+
+.burger-vertical-slide {
+    padding: 30px 60px;
+    margin: 10px 0 0 40px;
+}
+
+.container2 h1 {
+    color: rgb(108, 4, 4);
+    text-align: center;
+    padding-top: 30px;
+}
+
+.container2 h3 {
+    color: brown;
+}
+
+.about-unicafe {
+    display: flex;
+    float: right;
+    margin: 50px 100px 0 0;
+}
+
+.container3 {
+    border: 2px solid brown;
+    margin: 30px 20px;
+    padding-bottom: 150px;
+}
+
+.container3 h1 {
+    text-align: center;
+    color: brown;
+    margin-top: 15px;
+}
+
+.Combos {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+
+.Combos h2 {
+    color: brown;
+}
+
+.combo1, .combo2, .combo3 {
+    border: 2px solid brown;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.Combos ul li {             /*NOT WORKING! FIX!*/
+    list-style-type: none; 
+    line-height: 40px;
+}       
+
+.buy {
+    margin-top: 30px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(108, 4, 4);
+    transition: 0.2s ease;
+}
+
+.buy a{
+    color: white;
+    text-decoration: none;
+}
+
+.buy:hover {
+    background-color: rgb(147, 6, 6);
+}
+
+.contact {
+    border: 2px solid brown;
+    margin: 30px 20px;
+    text-align: center;
+}
+
+.contact h1 {
+    padding-top: 30px;
+    color: brown;
+}
+
+.form {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+input[type=text]{
+    margin: 10px auto 30px auto;
+    width: 400px;
+    padding: 7px 5px;
+    border: 2px solid brown;
+    border-radius: 3px;
+}
+
+input[type=email]{
+    margin: 10px auto 30px auto;
+    width: 400px;
+    padding: 7px 5px;
+    border: 2px solid brown;
+    border-radius: 3px;
+}
+
+input[type=number]{
+    margin: 10px auto 30px auto;
+    width: 400px;
+    padding: 7px 5px;
+    border: 2px solid brown;
+    border-radius: 3px;
+}
+
+.form textarea {
+    margin: 10px auto 30px auto;
+    width: 400px;
+    height: 250px;
+    padding: 7px 5px;
+    border: 2px solid brown;
+    border-radius: 3px;
+}
+
+.query {
+    padding: 10px;
+    background-color: rgb(108, 4, 4);
+    border: none;
+    border-radius: 3px;
+    transition: 0.2s ease;
+}
+
+.query a {
+    color: white;
+    text-decoration: none;
+}
+
+.query:hover {
+    background-color: rgb(147, 6, 6);
+}
+
+.footer {
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    background-color: rgb(108, 4, 4);
+    justify-content: space-around;
+}
+
+.footer1 h1,.footer2 h2,.footer3 h2,.credit p{
+    color: white;
+}
+
+.footer2 ul,.footer3 ul {
+    margin-top:20px;
+    list-style-type: none;
+}
+
+.footer2 ul li a,.footer3 ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.footer2 ul li a:hover,.footer3 ul li a:hover {
+    color: rgb(203, 203, 203);
+}

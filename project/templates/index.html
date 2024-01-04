@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}"> <!--favicon-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/food.css') }}">
+</head>
+<body>
+    <header font-weight="bolder" class="header">
+        <!--Logo-->
+        <a href="/"><img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="unicaf-logo" height="55x" ></a>
+        
+        <!--This is navbar content-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <a href="/">Home</a>
+
+            <a href="#">About</a>
+            <div class="dropdown">
+                <a href="#">Order</a>
+                <div class="dropdown-content">
+                    <a href="order-make">Make Order</a>
+                    <a href="order-history">Order History</a>
+                </div>
+            </div>
+
+            <a href="contact">Contact</a>
+
+            <div class="dropdown">
+                <a href="#">Account</a>
+                <div class="dropdown-content">
+                    <a href="/login" id="login">Login</a>
+                    <a href="/sign-up" id="signUp">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="invisible-box"></div>
+
+    
+        <div class="welcome">
+            <h1>Welcome to Unicafe!</h1>
+        </div>
+
+        <div class="carousel">
+            <button class="carousel_button carousel_button--left is-hidden">
+                <img src="{{ url_for('static', filename='images/left-arrow.png') }}" alt="Left">
+            </button>
+
+            <div class="carousel_track-container">
+                <ul class="carousel_track">
+                    <li class="carousel_slide current-slide">
+                        <img class="carousel_images" src="{{ url_for('static', filename='images/pasta.jpg') }}" alt="pasta">
+                    </li>
+                    <li class="carousel_slide">
+                        <img class="carousel_images" src="{{ url_for('static', filename='images/asorti.jpg') }}" alt="asorti">
+                    </li>
+                    <li class="carousel_slide">
+                        <img class="carousel_images" src="{{ url_for('static', filename='images/mwvadi.jpg') }}" alt="mwvadi">
+                    </li>
+                </ul>
+            </div>
+
+            <button class="carousel_button carousel_button--right">
+                <img src="{{ url_for('static', filename='images/right-arrow.png') }}" alt="Right">
+            </button>
+
+            <div class="carousel_nav">
+                <button class="carousel_indicator current-slide"></button>
+                <button class="carousel_indicator"></button>
+                <button class="carousel_indicator"></button>
+            </div>
+        </div>
+    
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h1>Order Your Favourite Food At Your Doorstep!</h1>
+
+        <p>Some-text</p> <!--Add some text here-->
+        <button class="order"><a href="">Order Now</a></button>
+    </div>
+
+    <div class="container2">
+        <h1>About Unicafe</h1>
+        <img src="{{ url_for('static', filename='images/burger-vertical-slide.jpg') }}" width="500px" class="burger-vertical-slide">
+        <div class="about-unicafe">
+            <h3>Unicafe</h3>&nbsp blah-blah-blah <!--Some text here-->
+        </div>
+    </div>
+
+    <div class="container3">
+        <h1>Our Best Combos</h1>
+        <div class="Combos">
+            <div class="combo1">
+                <h2>$99</h2>
+                <img src="{{ url_for('static', filename='images/combo1.jpg') }}" width="300px" style="margin: 30px 0 30px 0;">
+                <ul>
+                    <li>Vegeterian Salad</li>
+                    <li>Orange Juice</li>
+                    <button class="buy"><a href="">Order Now!</a></button>
+                </ul>
+            </div>
+
+            <div class="combo2">
+                <h2>$99</h2>
+                <img src="{{ url_for('static', filename='images/combo2.jpg') }}" width="300px" style="margin: 30px 0 30px 0;">
+                <ul>
+                    <li>2 Burgers</li>
+                    <li>2 Cokes</li>
+                    <button class="buy"><a href="">Order Now!</a></button>
+                </ul>
+            </div>
+
+            <div class="combo3">
+                <h2>$99</h2>
+                <img src="{{ url_for('static', filename='images/combo3.jpg') }}" width="300px" style="margin: 30px 0 30px 0;">
+                <ul>
+                    <li>99 Khinkalis</li>
+                    <button class="buy"><a href="">Order Now!</a></button>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h1>Got some queries, feel free to contact us</h1>
+        <div class="form">
+            <input type="text" placeholder="Name" is="Name">
+            <input type="email" placeholder="Email" is="Email">
+            <input type="number" placeholder="Mobile No" id="Mobile No">
+            <textarea placeholder="Your Message Here" id="text-area" cols="10" rows="5"></textarea>
+            <button class="query"><a href="">Submit</a></button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footer">
+        <div class="footer1"><h1>Unicafe</h1></div>
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <div class="footer2">
+            <h2>Services</h2>
+            <ul>
+                <li><a href="">Sign Up</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Order Food</a></li>
+                <li><a href="">Affliate</a></li>
+            </ul>
+        </div>
+
+        <div class="footer3">
+            <h2>Our Page</h2>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+
+        <div class="credit">
+            <p>Copyright 2023 GDV all rights reserved</p>
+        </div>
+
+    </div>
+
+    <script src="{{url_for('static', filename='javascript/carousel.js')}}"></script>
+</body>
+</html>

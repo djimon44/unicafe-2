@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}"> <!--favicon-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/authentication.css') }}">
+    <title>Sign Up</title>
+    <script src="https://kit.fontawesome.com/d675a3a952.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header font-weight="bolder" class="header">
+        <!--Logo-->
+        <a href="/"><img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="unicaf-logo" height="55x" ></a>
+        
+        <!--This is navbar content-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <a href="/">Home</a>
+
+            <a href="#">About</a>
+            <div class="dropdown">
+                <a href="#">Order</a>
+                <div class="dropdown-content">
+                    <a href="order-make">Make Order</a>
+                    <a href="order-history">Order History</a>
+                </div>
+            </div>
+
+            <a href="contact">Contact</a>
+
+            <div class="dropdown">
+                <a href="#">Account</a>
+                <div class="dropdown-content">
+                    <a href="/login" id="login">Login</a>
+                    <a href="/sign-up" id="signUp">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="invisible-box"></div>
+
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form method="POST">
+                <div class="input-group">
+                    <div class="input-field" id="nameField"> <!--FONT AWESOME NOT WORKING. FIX!-->
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" class="form-control" name="name" id="name">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Email" class="form-control" name="email" id="email">
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Password" class="form-control" name="password" id="password">
+                    </div>
+                    <p>Have an account? <a href="/login">Login</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>
