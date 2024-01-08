@@ -1,1 +1,49 @@
-<h1>Welcome!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}"> <!--favicon-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Profile</title>
+</head>
+<body>
+    <header font-weight="bolder" class="header">
+        <!--Logo-->
+        <a href="/"><img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="unicaf-logo" height="55x" ></a>
+        
+        <!--This is navbar content-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <a href="/">Home</a>
+
+            <a href="#">About</a>
+            <div class="dropdown">
+                <a href="#">Order</a>
+                <div class="dropdown-content">
+                    <a href="order-make">Make Order</a>
+                    <a href="order-history">Order History</a>
+                </div>
+            </div>
+
+            <a href="contact">Contact</a>
+
+            <div class="dropdown">
+                <a href="#">Account</a>
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                    <a href="/profile" id="profile">Profile</a>
+                    <a href="/logout" id="logout">Logout</a>
+                    {% else %}
+                    <a href="/login" id="login">Login</a>
+                    <a href="/sign-up" id="signUp">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="invisible-box"></div>
+
+    <h1>Welcome!</h1>
+</body>
+</html>
