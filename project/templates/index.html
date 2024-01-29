@@ -19,14 +19,14 @@
 
             <a href="#">About</a>
             <div class="dropdown">
-                <a href="#">Order</a>
+                <a href="/order">Order</a>
                 <div class="dropdown-content">
-                    <a href="order-make">Make Order</a>
+                    <a href="/inventory">Inventory</a>
                     <a href="order-history">Order History</a>
                 </div>
             </div>
 
-            <a href="contact">Contact</a>
+            <a href="#">Cart</a>
 
             <div class="dropdown">
                 <a href="#">Account</a>
@@ -90,7 +90,7 @@
         <h1>Order Your Favourite Food At Your Doorstep!</h1>
 
         <p>Some-text</p> <!--Add some text here-->
-        <button class="order"><a href="">Order Now</a></button>
+        <button class="order"><a href="/order">Order Now</a></button>
     </div>
 
     <div class="container2">
@@ -110,7 +110,7 @@
                 <ul>
                     <li>Vegeterian Salad</li>
                     <li>Orange Juice</li>
-                    <button class="buy"><a href="">Order Now!</a></button>
+                    <button class="buy"><a href="/order">Order Now!</a></button>
                 </ul>
             </div>
 
@@ -120,7 +120,7 @@
                 <ul>
                     <li>2 Burgers</li>
                     <li>2 Cokes</li>
-                    <button class="buy"><a href="">Order Now!</a></button>
+                    <button class="buy"><a href="/order">Order Now!</a></button>
                 </ul>
             </div>
 
@@ -129,7 +129,7 @@
                 <img src="{{ url_for('static', filename='images/combo3.jpg') }}" width="300px" style="margin: 30px 0 30px 0;">
                 <ul>
                     <li>99 Khinkalis</li>
-                    <button class="buy"><a href="">Order Now!</a></button>
+                    <button class="buy"><a href="/order">Order Now!</a></button>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .dish-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .dish-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #button-container {
+            text-align: center;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    {% for row in data %}
+    <div class="dish-container">
+        <h2>{{ row[1] }}</h2>
+        <p>{{ row[3] }}</p>
+        <p>Price: ${{ row[4] }}</p>
+        <img src="{{row[2]}}" alt="{{ row[1] }}" width="100">
+        <div id="button-container">
+            <button class="action-button">Order Now</button>
+        </div>
+    </div>
+    {{ row[2 ]}}
+    {% endfor %}
+
+    <!-- Add more dish containers as needed -->
+
+
+
+</body>
+</html>

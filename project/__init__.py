@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_cors import CORS
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -14,7 +15,10 @@ def create_app():
     migrate = Migrate(app, db)
 
     app.config['SECRET_KEY'] = '12345'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['UPLOAD_FOLDER'] = '/home/dimitri/code-wsl/gdv-project/project/uploads'
+    CORS(app)
     db.init_app(app)
   
     # blueprint for auth routes in our app
@@ -25,7 +29,7 @@ def create_app():
     from .views import views as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from .models import User, Note
+    from .models import User, Note, Inventory
 
     with app.app_context():
         db.create_all()

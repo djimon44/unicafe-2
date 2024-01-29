@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Form</title>
+</head>
+<body>
+    <a href="/">Home Page</a>
+    <h1>Submit Form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+            <div class="input-field" id="nameField"> <!--FONT AWESOME NOT WORKING. FIX!-->
+                <input type="text" placeholder="Name" class="form-control" name="name" id="name">
+            </div>
+
+            <div class="input-field">
+                <input type="text" placeholder="Caption" class="form-control" name="caption" id="caption">
+            </div>
+
+            <div class="input-field">
+                <input type="text" placeholder="Price" class="form-control" name="price" id="price">
+            </div>
+
+            <div class="input-field">
+                <input type="file" name="picture" accept="image/*" required>
+            </div>
+        </div>
+        <div class="btn-field">
+            <button type="submit" id="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
+
