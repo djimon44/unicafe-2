@@ -127,7 +127,7 @@
     color: brown;
 }
 
-.form {
+form {
     display: grid;
     align-items: center;
     justify-content: center;
@@ -160,7 +160,7 @@ input[type=number]{
     border-radius: 3px;
 }
 
-.form textarea {
+form textarea {
     margin: 10px auto 30px auto;
     width: 400px;
     height: 250px;

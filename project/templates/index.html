@@ -137,13 +137,13 @@
 
     <div class="contact">
         <h1>Got some queries, feel free to contact us</h1>
-        <div class="form">
-            <input type="text" placeholder="Name" is="Name">
-            <input type="email" placeholder="Email" is="Email">
-            <input type="number" placeholder="Mobile No" id="Mobile No">
-            <textarea placeholder="Your Message Here" id="text-area" cols="10" rows="5"></textarea>
-            <button class="query"><a href="">Submit</a></button>
-        </div>
+        <form method="post" action="{{ url_for('views.note') }}" id="form">
+            <input type="text" placeholder="Name" id="name" name="name">
+            <input type="email" placeholder="Email" id="email" name="email">
+            <input type="number" placeholder="Mobile No" id="mobile" name="mobile">
+            <textarea placeholder="Your Message Here" id="data" name="data" cols="10" rows="5"></textarea>
+            <button class="query" type="submit">Submit</button>
+        </form>
     </div>
     <br>
     <br>

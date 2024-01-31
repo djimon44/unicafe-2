@@ -43,12 +43,12 @@
         <h2>{{ row[1] }}</h2>
         <p>{{ row[3] }}</p>
         <p>Price: ${{ row[4] }}</p>
-        <img src="{{ url_for('static', filename='uploads/' + row[2]) }}" alt="{{ row[1] }}" width="100">
+        {% set image_path_parts = row[2].split('/') %}
+        <img src="{{ url_for('static', filename='uploads/' + image_path_parts[-1] )}}" alt="{{ row[1] }}" width="100">
         <div id="button-container">
-            <button class="action-button">Order Now</button>
+            <button class="action-button">Add</button>
         </div>
     </div>
-    {{ row[2]}}
     {% endfor %}
 
     <!-- Add more dish containers as needed -->

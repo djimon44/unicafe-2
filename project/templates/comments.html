@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    {% for row in data %}
+    <div class="dish-container">
+        <h4>Name: {{ row[1] }}</h4>
+        <h4>Email: {{ row[2] }}</h4>
+        <h4>Mobile Num: {{ row[3] }}</h4>
+        <h2>Comment: {{ row[4] }}</h2>
+    </div>
+    {% endfor %}
+</body>
+</html>

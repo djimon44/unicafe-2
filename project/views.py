@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Inventory  # Assuming your model is defined in the models.py file
+from .models import Inventory, Note  # Assuming your model is defined in the models.py file
 from . import db  # Import the database instance
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -14,6 +14,21 @@ app.config['UPLOAD_FOLDER'] = '/home/dimitri/code-wsl/gdv-project/project/static
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
+    return render_template('index.html', user=current_user)
+
+@views.route('/note', methods=['POST'])
+@login_required
+def note():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        mobile = request.form.get('mobile')
+        data = request.form.get('data')
+
+        new_note = Note(name=name, email=email, mobile=mobile, data=data, user=current_user)
+        db.session.add(new_note)
+        db.session.commit()
+
     return render_template('index.html', user=current_user)
 
 @views.route('/profile', methods=['GET', 'POST'])
@@ -54,3 +69,19 @@ def inventory():
         db.session.commit()
 
     return render_template('inventory.html')
+
+@views.route('/comments', methods=['GET', 'POST'])
+@login_required
+def comments():
+    # Connect to SQLite3 database
+    conn = sqlite3.connect('/home/dimitri/code-wsl/gdv-project/instance/database.db')  # Replace with your database name
+    cursor = conn.cursor()
+
+    # Execute a SELECT query to fetch data from the table
+    cursor.execute('SELECT * FROM Note')  # Replace with your table name
+    data = cursor.fetchall()
+
+    # Close the database connection
+    conn.close()
+
+    return render_template('comments.html', data=data)
