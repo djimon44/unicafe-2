@@ -37,18 +37,18 @@
     </style>
 </head>
 <body>
-
+    <a href="/">Home</a>
     {% for row in data %}
     <div class="dish-container">
         <h2>{{ row[1] }}</h2>
         <p>{{ row[3] }}</p>
         <p>Price: ${{ row[4] }}</p>
-        <img src="{{row[2]}}" alt="{{ row[1] }}" width="100">
+        <img src="{{ url_for('static', filename='uploads/' + row[2]) }}" alt="{{ row[1] }}" width="100">
         <div id="button-container">
             <button class="action-button">Order Now</button>
         </div>
     </div>
-    {{ row[2 ]}}
+    {{ row[2]}}
     {% endfor %}
 
     <!-- Add more dish containers as needed -->
