@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }   
+        body {
+            min-height: 100vh;
+            background-color: rgb(227, 218, 201);
+        }
+        .invisible-box {
+            width: 761.33px;
+            height: 99px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            background: rgb(108, 4, 4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 32px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        /*This is navbar content <a> tag styling*/
+        .navbar a {
+            position: relative;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bolder;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+
+        /*This makes navbar little animated*/
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: .3s;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+
+        /*This is dropdown styling*/
+        .dropdown-content {
+            top: 60px;
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 0;
+            margin-left: -13px;
+        }
+
+        .dropdown-content a {
+            color: rgb(108, 4, 4);
+            padding: 5px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-left: 0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        section {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        .developer {
+            flex: 0 0 30%;
+            text-align: center;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+        }
+        h2, p {
+            color: #333;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header font-weight="bolder" class="header">
+        <!--Logo-->
+        <a href="/"><img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="unicaf-logo" height="55x" ></a>
+        
+        <!--This is navbar content-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <a href="/">Home</a>
+
+            <a href="/about">About</a>
+
+            <a href="/order">Order</a>
+
+            <div class="dropdown">
+                <a href="/">Dev Tools</a>
+                <div class="dropdown-content">
+                    <a href="/inventory">Add Dishes</a>
+                    <a href="/comments">Comments</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="/profile">Account</a>
+                <div class="dropdown-content">
+                    <a href="/profile" id="profile">Profile</a>
+                    <a href="/logout" id="logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="invisible-box"></div>
+
+    <section>
+        <div class="developer">
+            <img src="{{ url_for('static', filename='images/gio.jpg') }}" alt="Developer 1">
+            <h2>Giorgi Meskhia</h2>
+            <p>Email: thegiorgidmeskhia@gmail.com</p>
+            <p>Work Distribution: Front-end development <br><br> HTML, CSS </p>
+        </div>
+
+        <div class="developer">
+            <img src="{{ url_for('static', filename='images/dima.jpg') }}" alt="Developer 2">
+            <h2>Dimitri Durmishian</h2>
+            <p>Email: dima.durmish@gmail.com</p>
+            <p>Work Distribution: Back-end development <br><br> Python-Flask API, SQLite3 Database</p>
+        </div>
+
+        <div class="developer">
+            <img src="{{ url_for('static', filename='images/vache.jpg') }}" alt="Developer 3">
+            <h2>Vache Sepashvili</h2>
+            <p>Email: vache.sepashvili.1@iliauni.edu.ge</p>
+            <p>Work Distribution: Front-end development <br><br> HTML, CSS, Creative Manager</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 GDV-IliaUni. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for
+from flask import Flask, Blueprint, render_template, request, redirect, url_for, session
 from flask_login import login_required, current_user
-from .models import Inventory, Note  # Assuming your model is defined in the models.py file
+from .models import Inventory, Note, User # Assuming your model is defined in the models.py file
 from . import db  # Import the database instance
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -39,18 +39,40 @@ def profile():
 @views.route('/order', methods=['GET', 'POST'])
 @login_required
 def order():
-    # Connect to SQLite3 database
-    conn = sqlite3.connect('/home/dimitri/code-wsl/gdv-project/instance/database.db')  # Replace with your database name
-    cursor = conn.cursor()
+    if request.method == 'POST':
+        action = request.form.get('action')
 
-    # Execute a SELECT query to fetch data from the table
-    cursor.execute('SELECT * FROM Inventory')  # Replace with your table name
-    data = cursor.fetchall()
+        if action == 'add':
+            item_id = request.form.get('item_id')
+            item = Inventory.query.get(item_id)
 
-    # Close the database connection
-    conn.close()
+            if 'cart' not in session:
+                session['cart'] = []
 
-    return render_template('order.html', data=data)
+            # Check if the item is already in the cart
+            cart_item = next((item for item in session['cart'] if item['id'] == item.id), None)
+
+            if cart_item:
+            # If the item is already in the cart, increase the quantity
+                cart_item['quantity'] += 1
+            else:
+                # If the item is not in the cart, add it with a quantity of 1
+                session['cart'].append({'id': item.id, 'name': item.name, 'price': item.price, 'quantity': 1})
+
+        elif action == 'order':
+            total_price = sum(item['price'] * item['quantity'] for item in session.get('cart', []))
+            
+            # Save the total_price in the session
+            session['total_price'] = total_price
+
+            # Process the order (e.g., save to the database, send confirmation email, etc.)
+            # Reset the shopping cart after the order is placed
+            session.pop('cart', None)
+
+    # Fetch data from the Inventory table
+    data = Inventory.query.all()
+
+    return render_template('order.html', data=data, user=current_user)
 
 @views.route('/inventory', methods=['GET', 'POST'])
 def inventory():
@@ -85,3 +107,7 @@ def comments():
     conn.close()
 
     return render_template('comments.html', data=data)
+
+@views.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template('about.html', user=current_user)

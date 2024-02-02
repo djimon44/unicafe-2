@@ -3,57 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Dish Information</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+   body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e3dac9;
+        text-align: center;
+        color: #333;
+      }
 
-        .dish-container {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+      .invisible-box {
+    width: 761.33px;
+    height: 99px;
+}
 
-        .dish-image {
-            max-width: 100%;
-            height: auto;
-        }
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: rgb(108, 4, 4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
 
-        #button-container {
-            text-align: center;
-        }
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
 
-        .action-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
+.navbar {
+    display: flex;
+}
+
+/*This is navbar content <a> tag styling*/
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bolder;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+/*This makes navbar little animated*/
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+/*This is dropdown styling*/
+.dropdown-content {
+    top: 60px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 0;
+    margin-left: -13px;
+}
+
+.dropdown-content a {
+    color: rgb(108, 4, 4);
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-left: 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+      .dish-container {
+        border: 2px solid #e3dac9;
+        background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        text-align: left;
+      }
+
+      .dish-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .dish-details {
+        margin-bottom: 15px;
+      }
+
+      .dish-title {
+        font-size: 28px;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .dish-description {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+
+      .dish-price {
+        font-size: 22px;
+        color: #111111;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      #button-container {
+        text-align: center;
+      }
+
+      .action-button {
+        padding: 12px 24px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: rgb(108, 4, 4);
+        color: #e3dac9;
+        border: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .action-button:hover {
+        background-color: #ff0000;
+      }
+    
     </style>
 </head>
 <body>
-    <a href="/">Home</a>
-    {% for row in data %}
-    <div class="dish-container">
-        <h2>{{ row[1] }}</h2>
-        <p>{{ row[3] }}</p>
-        <p>Price: ${{ row[4] }}</p>
-        {% set image_path_parts = row[2].split('/') %}
-        <img src="{{ url_for('static', filename='uploads/' + image_path_parts[-1] )}}" alt="{{ row[1] }}" width="100">
-        <div id="button-container">
-            <button class="action-button">Add</button>
-        </div>
+    <header font-weight="bolder" class="header">
+        <!--Logo-->
+        <a href="/"><img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="unicaf-logo" height="55x" ></a>
+        
+        <!--This is navbar content-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <a href="/">Home</a>
+
+            <a href="/about">About</a>
+
+            <a href="/order">Order</a>
+
+            <div class="dropdown">
+                <a href="/">Dev Tools</a>
+                <div class="dropdown-content">
+                    <a href="/inventory">Add Dishes</a>
+                    <a href="/comments">Comments</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">Account</a>
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                    <a href="/profile" id="profile">Profile</a>
+                    <a href="/logout" id="logout">Logout</a>
+                    {% else %}
+                    <a href="/login" id="login">Login</a>
+                    <a href="/sign-up" id="signUp">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="invisible-box"></div>
+    <form method="post" action="{{ url_for('views.order') }}">
+        {% for item in data %}
+            <div class="dish-container">
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.caption }}</p>
+                <p>Price: ${{ item.price }}</p>
+                <img src="{{ url_for('static', filename='uploads/' + item.picture.split('/')[-1]) }}" alt="{{ item.name }}" width="100">
+                <div id="button-container">
+                    <!-- Add a hidden input to store the item ID -->
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <button class="action-button" type="submit" name="action" value="add">Add</button>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+
+    <div>
+        <h2>Shopping Cart</h2>
+        <ul>
+            {% for item in session.get('cart', []) %}
+            <li>{{ item['name'] }} - ${{ item['price'] }} (Quantity: {{ item['quantity'] }})</li>
+            {% endfor %}
+        </ul>
+        <p>Total Price: ${{ session.get('total_price', 0) }}</p>
+        <form method="post" action="{{ url_for('views.order') }}">
+            <button class="action-button" type="submit" name="action" value="order">Order</button>
+        </form>
     </div>
-    {% endfor %}
-
-    <!-- Add more dish containers as needed -->
-
-
-
 </body>
 </html>
