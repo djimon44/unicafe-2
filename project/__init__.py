@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_cors import CORS
 
-# init SQLAlchemy so we can use it later in our models
+# init SQLAlchemy 
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 

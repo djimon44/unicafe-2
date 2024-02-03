@@ -93,7 +93,7 @@
     text-align: center;
 }
 
-.Combos ul li {             /*NOT WORKING! FIX!*/
+.Combos ul li {             
     list-style-type: none; 
     line-height: 40px;
 }       

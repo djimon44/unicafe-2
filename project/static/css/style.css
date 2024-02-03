@@ -44,7 +44,7 @@ body {
     display: flex;
 }
 
-/*This is navbar content <a> tag styling*/
+
 .navbar a {
     position: relative;
     font-size: 18px;
@@ -54,7 +54,6 @@ body {
     margin-left: 40px;
 }
 
-/*This makes navbar little animated*/
 .navbar a::before {
     content: '';
     position: absolute;
@@ -70,7 +69,7 @@ body {
     width: 100%;
 }
 
-/*This is dropdown styling*/
+
 .dropdown-content {
     top: 60px;
     display: none;
@@ -167,7 +166,6 @@ body {
 }
 
 .carousel_nav {
-    /* background: pink; */
     display: flex;
     justify-content: center;
     padding: 10px 0;

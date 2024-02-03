@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, render_template, request, redirect, url_for, session
 from flask_login import login_required, current_user
-from .models import Inventory, Note, User # Assuming your model is defined in the models.py file
-from . import db  # Import the database instance
+from .models import Inventory, Note, User 
+from . import db  
 import os
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3
@@ -53,10 +53,10 @@ def order():
             cart_item = next((item for item in session['cart'] if item['id'] == item.id), None)
 
             if cart_item:
-            # If the item is already in the cart, increase the quantity
+            # Increase the quantity
                 cart_item['quantity'] += 1
             else:
-                # If the item is not in the cart, add it with a quantity of 1
+                # If the item is not in the cart
                 session['cart'].append({'id': item.id, 'name': item.name, 'price': item.price, 'quantity': 1})
 
         elif action == 'order':
@@ -65,7 +65,6 @@ def order():
             # Save the total_price in the session
             session['total_price'] = total_price
 
-            # Process the order (e.g., save to the database, send confirmation email, etc.)
             # Reset the shopping cart after the order is placed
             session.pop('cart', None)
 
@@ -85,7 +84,6 @@ def inventory():
         picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture.filename)
         picture.save(picture_path)
 
-        # Save data to the Inventory table using Flask-SQLAlchemy
         new_item = Inventory(name=name, caption=caption, price=price, picture=picture_path)
         db.session.add(new_item)
         db.session.commit()
@@ -96,11 +94,11 @@ def inventory():
 @login_required
 def comments():
     # Connect to SQLite3 database
-    conn = sqlite3.connect('/home/dimitri/code-wsl/gdv-project/instance/database.db')  # Replace with your database name
+    conn = sqlite3.connect('/home/dimitri/code-wsl/gdv-project/instance/database.db') 
     cursor = conn.cursor()
 
     # Execute a SELECT query to fetch data from the table
-    cursor.execute('SELECT * FROM Note')  # Replace with your table name
+    cursor.execute('SELECT * FROM Note') 
     data = cursor.fetchall()
 
     # Close the database connection
