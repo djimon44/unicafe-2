@@ -1,4 +1,4 @@
-# Unicafe-2
+# Unicafe
 
 A simple **Flask web application** that simulates a university café menu and interaction system.  
 This project demonstrates full-stack fundamentals using Python, Flask, HTML/CSS, templates, and a lightweight database.
